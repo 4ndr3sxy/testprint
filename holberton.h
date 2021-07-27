@@ -1,34 +1,45 @@
-#ifndef HOLBERTON_T
-#define HOLBERTON_T
+#ifndef HOLBERTON_H
+#define HOLBERTON_H
 
 #include <stdarg.h>
-#include <unistd.h>
-#include <limits.h>
-#include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
-/**
- * struct type_print - type_print
- * @character: type of data
- * @f: The function associated
- */
-typedef struct type_print
+unsigned int _printf(const char *format, ...);
+
+
+typedef struct buffer
 {
-	char *character;
-	int (*f)(va_list, char *, int);
-} t_p;
+	char *buffer;
+	char *start;
+	int len;
+} buffer_t;
 
-int (*get_func(const char *s))(va_list, char *, int);
+typedef struct converter
+{
+	char character;
+	unsigned int (*func)(va_list, buffer_t *);
+} converter_t;
 
-int count_modulars(char *);
 
-int buffer_save_char(va_list, char *, int);
-int buffer_save_string(va_list, char *, int);
-int buffer_save_int(va_list, char *, int);
+unsigned int convert_c(va_list ap, buffer_t *output);
+unsigned int convert_s(va_list ap, buffer_t *output);
+unsigned int convert_percent(__attribute__((unused)) va_list arg_list, buffer_t *output);
+unsigned int convert_di(va_list arg_list, buffer_t *output);
+unsigned int convert_b(va_list args, buffer_t *output);
+unsigned int convert_ubase(buffer_t *output, unsigned long int num, char *base);
+unsigned int convert_u(va_list args, buffer_t *output);
+unsigned int convert_o(va_list args, buffer_t *output);
+unsigned int convert_x(va_list args, buffer_t *output);
+unsigned int convert_X(va_list arg_list, buffer_t *output);
+unsigned int convert_S(va_list args, buffer_t *output);
+unsigned int convert_p(va_list args, buffer_t *output);
+unsigned int convert_r(va_list args, buffer_t *output);
 
-char *_itoa(int num);
-int _strlen(const char *s);
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-int _printf(const char *format, ...);
+buffer_t *init_buffer(void);
+void free_buffer(buffer_t *output);
+unsigned int _copy(buffer_t *output, const char *src, int n);
 
-#endif /* HOLBERTON_T */
+unsigned int (*character_handler(const char *character))(va_list, buffer_t *);
+
+#endif
