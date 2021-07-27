@@ -1,5 +1,13 @@
 #include "holberton.h"
 
+/**
+ * convert_ubase - Converts an unsigned long to a base and
+ *                 copies the result to the output.
+ * @output: A buffer_t struct containing a character array.
+ * @num: An unsigned long to be converted.
+ * @base: A pointer to a string containing the base to convert to.
+ * Return: The number of bytes stored to the buffer.
+ */
 unsigned int convert_ubase(buffer_t *output, unsigned long int num, char *base)
 {
 	unsigned int size, ret = 1;
@@ -17,15 +25,29 @@ unsigned int convert_ubase(buffer_t *output, unsigned long int num, char *base)
 	return (ret);
 }
 
-unsigned int convert_b(va_list args, buffer_t *output)
+/**
+ * convert_b - Converts an unsigned int to binary and
+ *                 copies the result to the output.
+ * @output: A buffer_t struct containing a character array.
+ * @arg_list: A va_list list containing the arguments.
+ * Return: The number of bytes stored to the buffer.
+ */
+unsigned int convert_b(va_list arg_list, buffer_t *output)
 {
 	unsigned int num;
 
-	num = va_arg(args, int);
+	num = va_arg(arg_list, int);
 
 	return (convert_ubase(output, num, "01"));
 }
 
+/**
+ * convert_u - Converts an unsigned int to unsigned decimal and
+ *                 copies the result to the output.
+ * @output: A buffer_t struct containing a character array.
+ * @arg_list: A va_list list containing the arguments.
+ * Return: The number of bytes stored to the buffer.
+ */
 unsigned int convert_u(va_list arg_list, buffer_t *output)
 {
 	unsigned int num;
@@ -43,6 +65,13 @@ unsigned int convert_u(va_list arg_list, buffer_t *output)
 	return (ret);
 }
 
+/**
+ * convert_x - Converts an unsigned int to hexadecimal (lowercase) and
+ *                 copies the result to the output.
+ * @output: A buffer_t struct containing a character array.
+ * @arg_list: A va_list list containing the arguments.
+ * Return: The number of bytes stored to the buffer.
+ */
 unsigned int convert_x(va_list arg_list, buffer_t *output)
 {
 	unsigned long int num;
@@ -60,6 +89,13 @@ unsigned int convert_x(va_list arg_list, buffer_t *output)
 	return (ret);
 }
 
+/**
+ * convert_X - Converts an unsigned int to hexadecimal (uppercase) and
+ *                 copies the result to the output.
+ * @output: A buffer_t struct containing a character array.
+ * @arg_list: A va_list list containing the arguments.
+ * Return: The number of bytes stored to the buffer.
+ */
 unsigned int convert_X(va_list arg_list, buffer_t *output)
 {
 	unsigned long int num;
