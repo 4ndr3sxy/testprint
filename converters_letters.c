@@ -1,5 +1,13 @@
 #include "holberton.h"
 
+/**
+ * convert_c - Converts an argument to an unsigned char and
+ *             copies the result to the output.
+ * @arg_list: A va_list list containing the arguments.
+ * @output: A buffer_t struct containing a character array.
+ *
+ * Return: The number of bytes stored to the buffer.
+ */
 unsigned int convert_c(va_list arg_list, buffer_t *output)
 {
 	char c;
@@ -12,6 +20,14 @@ unsigned int convert_c(va_list arg_list, buffer_t *output)
 	return (ret);
 }
 
+/**
+ * convert_s - Converts an argument to a string and
+ *             copies the result to the output.
+ * @arg_list: A va_list list containing the arguments.
+ * @output: A buffer_t struct containing a character array.
+ *
+ * Return: The number of bytes stored to the buffer.
+ */
 unsigned int convert_s(va_list arg_list, buffer_t *output)
 {
 	char *str, *null = "(null)";
@@ -34,6 +50,12 @@ unsigned int convert_s(va_list arg_list, buffer_t *output)
 	return (ret);
 }
 
+/**
+ * convert_percent - copies a percent sign to the output.
+ * @arg_list: A va_list list containing the arguments.
+ * @output: A buffer_t struct containing a character array.
+ * Return: The number of bytes stored to the buffer.
+ */
 unsigned int convert_percent(__attribute__((unused)) va_list arg_list,
 		buffer_t *output)
 {
@@ -45,6 +67,13 @@ unsigned int convert_percent(__attribute__((unused)) va_list arg_list,
 	return (ret);
 }
 
+/**
+ * convert_r - Reverses a string and
+ *             copies the result to the output.
+ * @arg_list: A va_list list containing the arguments.
+ * @output: A buffer_t struct containing a character array.
+ * Return: The number of bytes stored to the buffer.
+ */
 unsigned int convert_r(va_list args, buffer_t *output)
 {
 	char *str, *null = "(null)";
