@@ -1,5 +1,12 @@
 #include "holberton.h"
 
+/**
+ * convert_o - Converts an unsigned int to octal and
+ *                 copies the result to the output.
+ * @output: A buffer_t struct containing a character array.
+ * @arg_list: A va_list list containing the arguments.
+ * Return: The number of bytes stored to the buffer.
+ */
 unsigned int convert_o(va_list arg_list, buffer_t *output)
 {
 	unsigned long int num;
@@ -15,10 +22,15 @@ unsigned int convert_o(va_list arg_list, buffer_t *output)
 	return (ret);
 }
 
-
-
-
-
+/**
+ * convert_S - Converts an argument to a string and
+ *             copies it to the output.
+ * Extra: Non-printable characteres (ASCII values < 32 or >= 127)
+ *              are stored as \x followed by the ASCII code value in hex.
+ * @args: A va_list list containing the arguments.
+ * @output: A buffer_t struct containing a character array.
+ * Return: The number of bytes stored to the buffer.
+ */
 unsigned int convert_S(va_list args, buffer_t *output)
 {
 	char *str, *null = "(null)", *hex = "\\x", zero = '0';
@@ -49,6 +61,13 @@ unsigned int convert_S(va_list args, buffer_t *output)
 	return (ret);
 }
 
+/**
+ * convert_p - Converts the address of an argument to hex and
+ *             copies the result to the output.
+ * @args: A va_list list containing the arguments.
+ * @output: A buffer_t struct containing a character array.
+ * Return: The number of bytes stored to the buffer.
+ */
 unsigned int convert_p(va_list args, buffer_t *output)
 {
 	char *null = "(nil)";
