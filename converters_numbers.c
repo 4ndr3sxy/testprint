@@ -1,7 +1,15 @@
 #include "holberton.h"
 #include <limits.h>
 
-
+/**
+ * convert_di - Converts an argument to a signed int and
+ *              stores it to a buffer contained in a struct.
+ * Extra: this one works with %d and %i.
+ * @arg_list: A va_list list containing the arguments..
+ * @output: A buffer_t struct containing a character array.
+ *
+ * Return: The number of bytes stored to the buffer.
+ */
 unsigned int convert_di(va_list arg_list, buffer_t *output)
 {
 	int tens = 1;
